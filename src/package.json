@@ -22,6 +22,7 @@
     "delay": 2500
   },
   "scripts": {
+    "proxy": "oauth2-proxy --config ../local/oauth2-proxy/oauth2-proxy-dev.cfg",
     "prebuild": "tslint -p tsconfig.json --fix",
     "ts-watch": "tsc --watch --jsx react-jsx",
     "ts-build": "tsc",
@@ -98,8 +99,8 @@
     "graphql-tools": "^7.0.2",
     "http-proxy-middleware": "^1.1.2",
     "isomorphic-unfetch": "^3.1.0",
-    "json-stable-stringify": "^1.0.2",
     "js-yaml": "^4.1.0",
+    "json-stable-stringify": "^1.0.2",
     "jwks-rsa": "^2.0.5",
     "jwt-decode": "^3.1.2",
     "keycloak-connect": "^17.0.1",

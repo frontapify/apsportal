@@ -277,9 +277,7 @@ components:
                 clientRegistration: managed
                 clientId: a-client-id
                 clientSecret: a-client-secret
-        CredentialIssuerRefID:
-            type: string
-        UserRefID:
+        undefinedRefID:
             type: string
         CredentialIssuer:
             properties:
@@ -338,9 +336,9 @@ components:
                         type: string
                     type: array
                 inheritFrom:
-                    $ref: '#/components/schemas/CredentialIssuerRefID'
+                    $ref: '#/components/schemas/undefinedRefID'
                 owner:
-                    $ref: '#/components/schemas/UserRefID'
+                    $ref: '#/components/schemas/undefinedRefID'
             type: object
             additionalProperties: false
             example:
@@ -350,7 +348,7 @@ components:
                 clientAuthenticator: client-secret
                 mode: auto
                 environmentDetails: []
-                owner: acope@idir
+                owner: janis@gov.bc.ca
         Maybe_Scalars-at-String_:
             type: string
             nullable: true
@@ -538,6 +536,8 @@ components:
         DraftDatasetRefID:
             type: string
         LegalRefID:
+            type: string
+        CredentialIssuerRefID:
             type: string
         Environment:
             properties:

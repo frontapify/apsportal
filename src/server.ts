@@ -1,6 +1,8 @@
 /// <reference types="node" />
 /// <reference types="express" />
 import 'reflect-metadata';
+
+require('dotenv').config();
 const { formatError } = require('./services/keystone_overrides/formatError');
 const { Keystone } = require('@keystonejs/keystone');
 const { Oauth2ProxyAuthStrategy } = require('./auth/auth-oauth2-proxy');
@@ -65,6 +67,7 @@ async function generateTypes() {
   await Promise.all(
     ['/nextapp/shared/types/query.types.ts', '/services/keystone/types.ts'].map(
       async (path: string) => {
+        console.log('generateTypes', process.cwd() + path)
         await generate(
           {
             schema: `http://localhost:3000${apiPath}`,
@@ -83,8 +86,6 @@ async function generateTypes() {
 
 const adapter = process.env.ADAPTER ? process.env.ADAPTER : 'mongoose';
 
-require('dotenv').config();
-
 loadRulesAndWatch(process.env.NODE_ENV);
 
 const state = { connected: false };
@@ -92,7 +93,7 @@ const state = { connected: false };
 const keystone = new Keystone({
   onConnect(keystone: any) {
     if (process.env.NODE_ENV === 'development') {
-      generateTypes();
+      // generateTypes().then(() => console.log('OK'));
     }
     if (process.env.CREATE_TABLES !== 'true') {
       initialiseData(keystone);
